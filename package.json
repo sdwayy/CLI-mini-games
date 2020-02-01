@@ -1,6 +1,6 @@
 {
   "name": "frontend-project-lvl1",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "first hexlet project",
   "main": "src/index.js",
   "scripts": {
@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/sdwayy/frontend-project-lvl1/issues"
   },
-  "homepage": "https://github.com/sdwayy/frontend-project-lvl1#readme"
+  "homepage": "https://github.com/sdwayy/frontend-project-lvl1#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
