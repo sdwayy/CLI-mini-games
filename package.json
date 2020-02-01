@@ -1,0 +1,28 @@
+{
+  "name": "frontend-project-lvl1",
+  "version": "0.0.1",
+  "description": "first hexlet project",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdwayy/frontend-project-lvl1.git"
+  },
+  "keywords": [
+    "hexlet",
+    "project",
+    "brain-games"
+  ],
+  "author": "Daniil Pugachev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdwayy/frontend-project-lvl1/issues"
+  },
+  "homepage": "https://github.com/sdwayy/frontend-project-lvl1#readme"
+}
