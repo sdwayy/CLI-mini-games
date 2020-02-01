@@ -4,7 +4,7 @@
   "description": "first hexlet project",
   "main": "src/index.js",
   "scripts": {
-    "test":"make lint"
+    "test": "make lint"
   },
   "type": "module",
   "bin": {
