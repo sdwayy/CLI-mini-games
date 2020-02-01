@@ -6,6 +6,4 @@ const getUserGreeting = (userName) => console.log(`Hello, ${userName}`);
 const getUserAccost = () => getUserGreeting(getUserName());
 
 
-export {
-  getUserAccost
-}
+export default getUserAccost;
