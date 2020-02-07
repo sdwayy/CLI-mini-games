@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import getUserAccost from '../src/index';
+import { getGameGreeting } from '../src/index.js';
 
-console.log('Welcome to the Brain Games!');
-getUserAccost();
+getGameGreeting();
