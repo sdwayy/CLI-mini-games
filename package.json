@@ -1,6 +1,6 @@
 {
   "name": "frontend-project-lvl1",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "description": "first hexlet project",
   "type": "module",
   "main": "src/index.js",
@@ -8,8 +8,8 @@
     "test": "make lint"
   },
   "bin": {
-    "brain-games": "bin/brain-games.js",
-    "brain-even": "bin/brain-even.js"
+    "brain-even": "bin/brain-even.js",
+    "brain-calc": "bin/brain-calc.js"
   },
   "repository": {
     "type": "git",
