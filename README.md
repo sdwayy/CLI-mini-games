@@ -12,3 +12,6 @@
 
 Запуск brain-gcd:
 [![asciicast](https://asciinema.org/a/pIfhUFLCE3Qz0Vy8eYBPzzSc0.svg)](https://asciinema.org/a/pIfhUFLCE3Qz0Vy8eYBPzzSc0)
+
+Запуск brain-progression:
+[![asciicast](https://asciinema.org/a/n5BEYTO2ezT5RxCaARJPvwqEg.svg)](https://asciinema.org/a/n5BEYTO2ezT5RxCaARJPvwqEg)

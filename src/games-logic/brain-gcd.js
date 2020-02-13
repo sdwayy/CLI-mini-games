@@ -6,6 +6,7 @@ import {
   getRandomNumber,
 } from '../index.js';
 
+const maxRandomNumber = 50;
 
 const getDividers = (number) => {
   const dividers = [];
@@ -19,24 +20,21 @@ const getDividers = (number) => {
   return dividers;
 };
 
-export default () => {
-  const maxRandomNumber = 50;
+const getRandomQuestion = () => `${getRandomNumber(maxRandomNumber)} ${getRandomNumber(maxRandomNumber)}`;
 
-  const getRandomQuestion = () => `${getRandomNumber(maxRandomNumber)} ${getRandomNumber(maxRandomNumber)}`;
 
-  const getAnswer = (qustion) => {
-    const numbers = qustion.split(' ');
-    const firstNumber = Math.abs(numbers[0]);
-    const secondNumber = Math.abs(numbers[1]);
-    const firstNumberDivisors = getDividers(firstNumber);
-    const seconNumberDivisors = getDividers(secondNumber);
-    const commonDividers = intersection(firstNumberDivisors, seconNumberDivisors);
+const getAnswer = (qustion) => {
+  const numbers = qustion.split(' ');
+  const firstNumber = Math.abs(numbers[0]);
+  const secondNumber = Math.abs(numbers[1]);
+  const firstNumberDivisors = getDividers(firstNumber);
+  const seconNumberDivisors = getDividers(secondNumber);
+  const commonDividers = intersection(firstNumberDivisors, seconNumberDivisors);
 
-    return String(commonDividers[commonDividers.length - 1]);
-  };
-
-  return getMainGameLogic(
-    'Find the greatest common divisor of given numbers.',
-    generateQuestionsList(getRandomQuestion, getAnswer),
-  );
+  return String(commonDividers[commonDividers.length - 1]);
 };
+
+export default () => getMainGameLogic(
+  'Find the greatest common divisor of given numbers.',
+  generateQuestionsList(getRandomQuestion, getAnswer),
+);
