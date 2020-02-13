@@ -9,3 +9,6 @@
 
 Запуск brain-calc: 
 [![asciicast](https://asciinema.org/a/Fh6ejDRt3yJ8rhpvHMNv5AOmv.svg)](https://asciinema.org/a/Fh6ejDRt3yJ8rhpvHMNv5AOmv)
+
+Запуск brain-gcd:
+[![asciicast](https://asciinema.org/a/pIfhUFLCE3Qz0Vy8eYBPzzSc0.svg)](https://asciinema.org/a/pIfhUFLCE3Qz0Vy8eYBPzzSc0)

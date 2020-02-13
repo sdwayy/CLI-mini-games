@@ -1,10 +1,22 @@
 import readlineSync from 'readline-sync';
 
+const maxGameAttempts = 3;
+
 // Возвращаемое значение не более (и не равно) max
 const getRandomNumber = (max) => Math.floor(Math.random() * Math.floor(max));
 
-const maxRandomNumber = 100;
-const maxGameAttempts = 3;
+const generateQuestionsList = (getRandomQustion, getAnswer) => {
+  const questions = [];
+
+  for (let i = 0; i < maxGameAttempts; i += 1) {
+    const question = getRandomQustion();
+    const answer = getAnswer(question);
+
+    questions.push([question, answer]);
+  }
+
+  return questions;
+};
 
 const getMainGameLogic = (gameRules, questions) => {
   const gameGreeting = 'Welcome to the Brain Games!';
@@ -49,73 +61,8 @@ const getMainGameLogic = (gameRules, questions) => {
   }
 };
 
-const getBrainEvenGameLogic = () => {
-  const questions = [];
-  const isEven = (number) => number % 2 === 0;
-
-  //  Создаем массив вопросов и ответов
-  for (let i = 0; i < maxGameAttempts; i += 1) {
-    questions[i] = []; // Массив вопроса
-    questions[i][0] = getRandomNumber(100); // Где первый элемент вопрос
-    questions[i][1] = isEven(questions[i][0]) ? 'yes' : 'no'; // Второй - ответ
-  }
-
-  return getMainGameLogic(
-    'Answer "yes" if the number is even, otherwise answer "no".',
-    questions,
-  );
-};
-
-const getCalcGameLogic = () => {
-  const questions = [];
-
-  const genarateOperation = () => {
-    const operators = ['*', '+', '-'];
-    const a = getRandomNumber(maxRandomNumber);
-    const b = getRandomNumber(maxRandomNumber);
-    const randomOperator = operators[getRandomNumber(operators.length)];
-
-    return `${a} ${randomOperator} ${b}`;
-  };
-
-  const getDecision = (stringExpression) => {
-    const expressionElements = stringExpression.split(' ');
-    const firstOperand = Number(expressionElements[0]);
-    const operator = expressionElements[1];
-    const secondOperand = Number(expressionElements[2]);
-
-    let decision = '';
-
-    switch (operator) {
-      case '-':
-        decision = String(firstOperand - secondOperand);
-        break;
-      case '*':
-        decision = String(firstOperand * secondOperand);
-        break;
-      case '+':
-        decision = String(firstOperand + secondOperand);
-        break;
-      default:
-        decision = null;
-    }
-
-    return decision;
-  };
-
-  for (let i = 0; i < maxGameAttempts; i += 1) {
-    questions[i] = []; // Массив вопроса
-    questions[i][0] = genarateOperation(); // Где первый элемент вопрос
-    questions[i][1] = getDecision(questions[i][0]); // Второй - ответ
-  }
-
-  return getMainGameLogic(
-    'What is the result of the expression?',
-    questions,
-  );
-};
-
 export {
-  getBrainEvenGameLogic,
-  getCalcGameLogic,
+  getMainGameLogic,
+  generateQuestionsList,
+  getRandomNumber,
 };
