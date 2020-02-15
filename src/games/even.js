@@ -1,18 +1,21 @@
+import getMainGameLogic from '../index.js';
+
 import {
-  getMainGameLogic,
   generateQuestionsList,
   getRandomNumber,
-} from '../index.js';
+} from '../util.js';
 
 const maxRandomNumber = 100;
 const isEven = (number) => number % 2 === 0;
 
-const getCorrectAnswer = (number) => {
+const getQuestion = () => getRandomNumber(maxRandomNumber);
+
+const getAnswer = (number) => {
   const correctAnswer = isEven(number) ? 'yes' : 'no';
   return correctAnswer;
 };
 
 export default () => getMainGameLogic(
   'Answer "yes" if the number is even, otherwise answer "no".',
-  generateQuestionsList(() => getRandomNumber(maxRandomNumber), getCorrectAnswer),
+  generateQuestionsList(getQuestion, getAnswer),
 );

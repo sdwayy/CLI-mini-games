@@ -1,76 +1,27 @@
 import readlineSync from 'readline-sync';
+import maxGameAttempts from './constans.js';
 
-const maxGameAttempts = 3;
-
-// Максимум и минимум включаются
-const getRandomIntInclusive = (min, max) => {
-  const minNumber = Math.ceil(min);
-  const maxNumber = Math.floor(max);
-  return Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
-};
-
-// Возвращаемое значение не более (и не равно) max
-const getRandomNumber = (max) => Math.floor(Math.random() * Math.floor(max));
-
-const generateQuestionsList = (getRandomQustion, getAnswer) => {
-  const questions = [];
+export default (gameDescription, questionsList) => {
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}`);
+  console.log(gameDescription);
 
   for (let i = 0; i < maxGameAttempts; i += 1) {
-    const question = getRandomQustion();
-    const answer = getAnswer(question);
+    const question = questionsList[i][0];
+    const correctAnswer = questionsList[i][1];
 
-    questions.push([question, answer]);
-  }
-
-  return questions;
-};
-
-const getMainGameLogic = (gameRules, questions) => {
-  const gameGreeting = 'Welcome to the Brain Games!';
-  let userName = '';
-  let userAnswer = '';
-
-  const getUserGreeting = () => `Hello, ${userName}`;
-
-  const getUserName = () => {
-    userName = readlineSync.question('May I have your name? ');
-    return userName;
-  };
-
-  const getUserAnswer = () => {
-    userAnswer = readlineSync.question('Your answer: ');
-    return userAnswer;
-  };
-
-  console.log(gameGreeting); // Brain Games приветствие
-  getUserName(); // Узнаем имя пользователя и записываем его
-  console.log(getUserGreeting()); // Приветствуем пользователя
-  console.log(gameRules); // Показываем правила игры
-
-  for (let i = 0; i <= maxGameAttempts; i += 1) {
-    if (i === maxGameAttempts) {
-      console.log(`Congratulations, ${userName}!`);
-      break;
-    }
-
-    const question = questions[i][0];
-    const correctAnswer = questions[i][1];
-
-    console.log(`Question: ${question}`); // Задаем вопрос
-    getUserAnswer(); // Получаем ответ от пользователя и записываем его
+    console.log(`Question: ${question}`);
+    const userAnswer = readlineSync.question('Your answer: ');
 
     if (String(userAnswer).toLowerCase() === correctAnswer) {
       console.log('Correct!');
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${userName}!`);
-      break;
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${userName}!`);
+      return;
     }
   }
-};
 
-export {
-  getMainGameLogic,
-  generateQuestionsList,
-  getRandomNumber,
-  getRandomIntInclusive,
+  console.log(`Congratulations, ${userName}!`);
 };

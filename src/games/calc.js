@@ -1,8 +1,9 @@
+import getMainGameLogic from '../index.js';
+
 import {
-  getMainGameLogic,
   generateQuestionsList,
   getRandomNumber,
-} from '../index.js';
+} from '../util.js';
 
 const maxRandomNumber = 50;
 

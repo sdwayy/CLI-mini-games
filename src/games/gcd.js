@@ -1,11 +1,12 @@
 import intersection from 'lodash.intersection';
+import getMainGameLogic from '../index.js';
 
 import {
-  getMainGameLogic,
   generateQuestionsList,
-  getRandomNumber,
-} from '../index.js';
+  getRandomIntInclusive,
+} from '../util.js';
 
+const minRandomNumber = 1;
 const maxRandomNumber = 50;
 
 const getDividers = (number) => {
@@ -20,7 +21,7 @@ const getDividers = (number) => {
   return dividers;
 };
 
-const getRandomQuestion = () => `${getRandomNumber(maxRandomNumber)} ${getRandomNumber(maxRandomNumber)}`;
+const getRandomQuestion = () => `${getRandomIntInclusive(minRandomNumber, maxRandomNumber)} ${getRandomIntInclusive(minRandomNumber, maxRandomNumber)}`;
 
 
 const getAnswer = (qustion) => {
