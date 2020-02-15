@@ -2,6 +2,13 @@ import readlineSync from 'readline-sync';
 
 const maxGameAttempts = 3;
 
+// Максимум и минимум включаются
+const getRandomIntInclusive = (min, max) => {
+  const minNumber = Math.ceil(min);
+  const maxNumber = Math.floor(max);
+  return Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+};
+
 // Возвращаемое значение не более (и не равно) max
 const getRandomNumber = (max) => Math.floor(Math.random() * Math.floor(max));
 
@@ -65,4 +72,5 @@ export {
   getMainGameLogic,
   generateQuestionsList,
   getRandomNumber,
+  getRandomIntInclusive,
 };

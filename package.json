@@ -1,6 +1,6 @@
 {
   "name": "frontend-project-lvl1",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "first hexlet project",
   "type": "module",
   "main": "src/index.js",
@@ -11,7 +11,8 @@
     "brain-even": "bin/brain-even.js",
     "brain-calc": "bin/brain-calc.js",
     "brain-gcd": "bin/brain-gcd.js",
-    "brain-progression": "bin/brain-progression.js"
+    "brain-progression": "bin/brain-progression.js",
+    "brain-prime": "bin/brain-prime.js"
   },
   "repository": {
     "type": "git",
