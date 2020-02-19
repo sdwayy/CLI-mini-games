@@ -6,6 +6,7 @@ import {
 } from '../util.js';
 
 const maxRandomNumber = 50;
+const gameRules = 'What is the result of the expression?';
 
 const genarateOperation = () => {
   const operators = ['*', '+', '-'];
@@ -42,6 +43,6 @@ const getDecision = (stringExpression) => {
 };
 
 export default () => getMainGameLogic(
-  'What is the result of the expression?',
+  gameRules,
   generateQuestionsList(genarateOperation, getDecision),
 );

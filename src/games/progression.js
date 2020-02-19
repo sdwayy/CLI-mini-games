@@ -7,6 +7,7 @@ import {
 
 const maxRandomNumber = 10;
 const progressionLength = 10;
+const gameRules = 'What number is missing in the progression?.';
 
 const getRandomQuestion = () => {
   const randomProgressionStart = getRandomNumber(maxRandomNumber);
@@ -41,13 +42,13 @@ const getAnswer = (question) => {
   }
 
   if (unknownNumberIndex === 0) {
-    return String(secondArrayItemToNumber - differenceOfNumbers);
+    return secondArrayItemToNumber - differenceOfNumbers;
   }
 
-  return String(previousItemToNumber + differenceOfNumbers);
+  return previousItemToNumber + differenceOfNumbers;
 };
 
 export default () => getMainGameLogic(
-  'What number is missing in the progression?.',
+  gameRules,
   generateQuestionsList(getRandomQuestion, getAnswer),
 );

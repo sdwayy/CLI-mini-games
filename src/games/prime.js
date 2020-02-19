@@ -7,6 +7,7 @@ import {
 
 const maxRandomNumber = 100;
 const minRandomNumber = -10;
+const gameRules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (number) => {
   if (Math.sign(number) === -1) {
@@ -39,6 +40,6 @@ const getAnswer = (number) => {
 };
 
 export default () => getMainGameLogic(
-  'Answer "yes" if given number is prime. Otherwise answer "no".',
+  gameRules,
   generateQuestionsList(getRandomQuestion, getAnswer),
 );
