@@ -32,8 +32,7 @@ const getRandomQuestion = () => `${getRandomNumber()} ${getRandomNumber()}`;
 
 const getAnswer = (question) => {
   const numbers = question.split(' ');
-  const firstNumber = numbers[0];
-  const secondNumber = numbers[1];
+  const [firstNumber, secondNumber] = numbers;
   const firstNumberDivisors = getDividers(firstNumber);
   const seconNumberDivisors = getDividers(secondNumber);
   const commonDividers = intersection(firstNumberDivisors, seconNumberDivisors);

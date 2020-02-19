@@ -14,7 +14,7 @@ export default (gameDescription, questionsList) => {
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
-    if (userAnswer.toLocaleLowerCase() === String(correctAnswer)) {
+    if (userAnswer === String(correctAnswer)) {
       console.log('Correct!');
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
