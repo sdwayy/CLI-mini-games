@@ -5,7 +5,7 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "test": "make lint"
+    "test": ""
   },
   "bin": {
     "brain-even": "src/bin/brain-even.js",
