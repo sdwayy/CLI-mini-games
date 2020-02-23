@@ -2,11 +2,11 @@ import intersection from 'lodash.intersection';
 import getMainGameLogic from '../index.js';
 
 import {
-  generateQuestionsList,
   getRandomIntInclusive,
+  getNumberDividers,
 } from '../util.js';
 
-const gameRules = 'Find the greatest common divisor of given numbers.';
+const gameDescription = 'Find the greatest common divisor of given numbers.';
 
 const getRandomNumber = () => {
   const minRandomNumber = 1;
@@ -15,32 +15,24 @@ const getRandomNumber = () => {
   return getRandomIntInclusive(minRandomNumber, maxRandomNumber);
 };
 
-const getDividers = (number) => {
-  const absoluteNumber = Math.abs(number);
-  const dividers = [];
-
-  for (let i = 1; i <= absoluteNumber; i += 1) {
-    if (absoluteNumber % i === 0) {
-      dividers.push(i);
-    }
-  }
-
-  return dividers;
-};
-
-const getRandomQuestion = () => `${getRandomNumber()} ${getRandomNumber()}`;
-
 const getAnswer = (question) => {
   const numbers = question.split(' ');
   const [firstNumber, secondNumber] = numbers;
-  const firstNumberDivisors = getDividers(firstNumber);
-  const seconNumberDivisors = getDividers(secondNumber);
+  const firstNumberDivisors = getNumberDividers(firstNumber);
+  const seconNumberDivisors = getNumberDividers(secondNumber);
   const commonDividers = intersection(firstNumberDivisors, seconNumberDivisors);
 
-  return commonDividers[commonDividers.length - 1];
+  return String(commonDividers[commonDividers.length - 1]);
+};
+
+const generateGameData = () => {
+  const question = `${getRandomNumber()} ${getRandomNumber()}`;
+  const answer = getAnswer(question);
+
+  return [question, answer];
 };
 
 export default () => getMainGameLogic(
-  gameRules,
-  generateQuestionsList(getRandomQuestion, getAnswer),
+  gameDescription,
+  generateGameData,
 );

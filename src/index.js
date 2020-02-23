@@ -1,20 +1,20 @@
 import readlineSync from 'readline-sync';
-import maxGameAttempts from './constans.js';
 
-export default (gameDescription, questionsList) => {
+const maxGameAttempts = 3;
+
+export default (gameDescription, getGameData) => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}`);
   console.log(gameDescription);
 
   for (let i = 0; i < maxGameAttempts; i += 1) {
-    const question = questionsList[i][0];
-    const correctAnswer = questionsList[i][1];
+    const [question, correctAnswer] = getGameData();
 
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
-    if (userAnswer === String(correctAnswer)) {
+    if (userAnswer === correctAnswer) {
       console.log('Correct!');
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);

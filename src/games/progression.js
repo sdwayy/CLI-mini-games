@@ -1,15 +1,11 @@
 import getMainGameLogic from '../index.js';
-
-import {
-  generateQuestionsList,
-  getRandomNumber,
-} from '../util.js';
+import { getRandomNumber } from '../util.js';
 
 const maxRandomNumber = 10;
 const progressionLength = 10;
-const gameRules = 'What number is missing in the progression?.';
+const gameDescription = 'What number is missing in the progression?.';
 
-const getRandomQuestion = () => {
+const getRandomProgression = () => {
   const randomProgressionStart = getRandomNumber(maxRandomNumber);
   const randomProgressionDifference = getRandomNumber(maxRandomNumber) + 1;
   const randomProgression = [randomProgressionStart];
@@ -18,37 +14,33 @@ const getRandomQuestion = () => {
     randomProgression.push(randomProgression[i] + randomProgressionDifference);
   }
 
-  randomProgression[getRandomNumber(randomProgression.length)] = '..';
-
-  return randomProgression.join(' ');
+  return randomProgression;
 };
 
-const getAnswer = (question) => {
-  const arrayOfQuestion = question.split(' ');
-  const unknownNumberIndex = arrayOfQuestion.findIndex((item) => item === '..');
+const getValueOfProgressionElement = (progression, elementIndex) => {
+  const diff = progression[1] - progression[0];
 
-  const lastItemIndex = arrayOfQuestion.length - 1;
-  const secondArrayItemToNumber = Number(arrayOfQuestion[1]);
-  const thirdArrayItemToNumber = Number(arrayOfQuestion[2]);
-  const previousItemToNumber = Number(arrayOfQuestion[unknownNumberIndex - 1]);
-  const nextItemToNumber = Number(arrayOfQuestion[unknownNumberIndex + 1]);
+  return String(+progression[0] + diff * elementIndex);
+};
 
-  let differenceOfNumbers = 0;
+const getQuestion = (progression) => {
+  const progressionCopy = progression.slice();
 
-  if (unknownNumberIndex === 0 || unknownNumberIndex === lastItemIndex) {
-    differenceOfNumbers = thirdArrayItemToNumber - secondArrayItemToNumber;
-  } else {
-    differenceOfNumbers = (nextItemToNumber - previousItemToNumber) / 2;
-  }
+  progressionCopy[getRandomNumber(progressionCopy.length)] = '..';
 
-  if (unknownNumberIndex === 0) {
-    return secondArrayItemToNumber - differenceOfNumbers;
-  }
+  return progressionCopy.join(' ');
+};
 
-  return previousItemToNumber + differenceOfNumbers;
+const generateGameData = () => {
+  const progression = getRandomProgression();
+  const question = getQuestion(progression);
+  const desiredElementIndex = question.split(' ').findIndex((item) => item === '..');
+  const answer = getValueOfProgressionElement(progression, desiredElementIndex);
+
+  return [question, answer];
 };
 
 export default () => getMainGameLogic(
-  gameRules,
-  generateQuestionsList(getRandomQuestion, getAnswer),
+  gameDescription,
+  generateGameData,
 );

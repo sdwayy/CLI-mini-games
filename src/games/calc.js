@@ -1,15 +1,11 @@
 import getMainGameLogic from '../index.js';
-
-import {
-  generateQuestionsList,
-  getRandomNumber,
-} from '../util.js';
+import { getRandomNumber } from '../util.js';
 
 const maxRandomNumber = 50;
-const gameRules = 'What is the result of the expression?';
+const gameDescription = 'What is the result of the expression?';
 const operators = ['*', '+', '-'];
 
-const genarateOperation = () => {
+const getRandomQuestion = () => {
   const a = getRandomNumber(maxRandomNumber);
   const b = getRandomNumber(maxRandomNumber);
   const randomOperator = operators[getRandomNumber(operators.length)];
@@ -17,8 +13,8 @@ const genarateOperation = () => {
   return `${a} ${randomOperator} ${b}`;
 };
 
-const getDecision = (stringExpression) => {
-  const expressionElements = stringExpression.split(' ');
+const getAnswer = (expression) => {
+  const expressionElements = expression.split(' ');
   const [firstOperand, operator, secondOperand] = expressionElements;
 
   let decision = '';
@@ -34,13 +30,20 @@ const getDecision = (stringExpression) => {
       decision = String(+firstOperand + +secondOperand);
       break;
     default:
-      decision = null;
+      return null;
   }
 
   return decision;
 };
 
+const generateGameData = () => {
+  const question = getRandomQuestion();
+  const answer = getAnswer(question);
+
+  return [question, answer];
+};
+
 export default () => getMainGameLogic(
-  gameRules,
-  generateQuestionsList(genarateOperation, getDecision),
+  gameDescription,
+  generateGameData,
 );
