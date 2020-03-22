@@ -1,14 +1,14 @@
-import getMainGameLogic from '../index.js';
-import { getRandomNumber } from '../util.js';
+import playGame from '../index.js';
+import { getRandomIntInclusive } from '../util.js';
 
 const maxRandomNumber = 50;
 const gameDescription = 'What is the result of the expression?';
 const operators = ['*', '+', '-'];
 
 const getRandomQuestion = () => {
-  const a = getRandomNumber(maxRandomNumber);
-  const b = getRandomNumber(maxRandomNumber);
-  const randomOperator = operators[getRandomNumber(operators.length)];
+  const a = getRandomIntInclusive(0, maxRandomNumber);
+  const b = getRandomIntInclusive(0, maxRandomNumber);
+  const randomOperator = operators[getRandomIntInclusive(0, operators.length - 1)];
 
   return `${a} ${randomOperator} ${b}`;
 };
@@ -43,7 +43,7 @@ const generateGameData = () => {
   return [question, answer];
 };
 
-export default () => getMainGameLogic(
+export default () => playGame(
   gameDescription,
   generateGameData,
 );

@@ -23,11 +23,7 @@ const getNumberDividers = (number) => {
   return dividers;
 };
 
-// Возвращаемое значение не более (и не равно) max
-const getRandomNumber = (max) => Math.floor(Math.random() * Math.floor(max));
-
 export {
   getRandomIntInclusive,
-  getRandomNumber,
   getNumberDividers,
 };

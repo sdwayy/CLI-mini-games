@@ -1,5 +1,5 @@
 import intersection from 'lodash.intersection';
-import getMainGameLogic from '../index.js';
+import playGame from '../index.js';
 
 import {
   getRandomIntInclusive,
@@ -32,7 +32,7 @@ const generateGameData = () => {
   return [question, answer];
 };
 
-export default () => getMainGameLogic(
+export default () => playGame(
   gameDescription,
   generateGameData,
 );
