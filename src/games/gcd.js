@@ -1,10 +1,6 @@
 import intersection from 'lodash.intersection';
 import playGame from '../index.js';
-
-import {
-  getRandomIntInclusive,
-  getNumberDividers,
-} from '../util.js';
+import getRandomIntInclusive from '../util.js';
 
 const gameDescription = 'Find the greatest common divisor of given numbers.';
 
@@ -13,6 +9,19 @@ const getRandomNumber = () => {
   const maxRandomNumber = 50;
 
   return getRandomIntInclusive(minRandomNumber, maxRandomNumber);
+};
+
+const getNumberDividers = (number) => {
+  const absoluteNumber = Math.abs(number);
+  const dividers = [];
+
+  for (let i = 1; i <= absoluteNumber; i += 1) {
+    if (absoluteNumber % i === 0) {
+      dividers.push(i);
+    }
+  }
+
+  return dividers;
 };
 
 const getAnswer = (question) => {

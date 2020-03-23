@@ -1,9 +1,5 @@
 import playGame from '../index.js';
-
-import {
-  getRandomIntInclusive,
-  getNumberDividers,
-} from '../util.js';
+import getRandomIntInclusive from '../util.js';
 
 const maxRandomNumber = 100;
 const minRandomNumber = -10;
@@ -14,14 +10,13 @@ const isPrime = (number) => {
     return false;
   }
 
-  let answer = true;
-  const dividersOfNumber = getNumberDividers(number);
-
-  if (dividersOfNumber.length > 2) {
-    answer = false;
+  for (let i = 2; i < number; i += 1) {
+    if (number % i === 0) {
+      return false;
+    }
   }
 
-  return answer;
+  return true;
 };
 
 const generateGameData = () => {

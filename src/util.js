@@ -10,20 +10,4 @@ const getRandomIntInclusive = (min, max) => {
   return Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
 };
 
-const getNumberDividers = (number) => {
-  const absoluteNumber = Math.abs(number);
-  const dividers = [];
-
-  for (let i = 1; i <= absoluteNumber; i += 1) {
-    if (absoluteNumber % i === 0) {
-      dividers.push(i);
-    }
-  }
-
-  return dividers;
-};
-
-export {
-  getRandomIntInclusive,
-  getNumberDividers,
-};
+export default getRandomIntInclusive;
