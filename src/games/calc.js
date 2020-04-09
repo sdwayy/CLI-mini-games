@@ -1,44 +1,30 @@
 import playGame from '../index.js';
-import { getRandomIntInclusive } from '../util.js';
+import getRandomIntInclusive from '../util.js';
 
 const maxRandomNumber = 50;
 const gameDescription = 'What is the result of the expression?';
 const operators = ['*', '+', '-'];
 
-const getRandomQuestion = () => {
-  const a = getRandomIntInclusive(0, maxRandomNumber);
-  const b = getRandomIntInclusive(0, maxRandomNumber);
-  const randomOperator = operators[getRandomIntInclusive(0, operators.length - 1)];
-
-  return `${a} ${randomOperator} ${b}`;
-};
-
-const getAnswer = (expression) => {
-  const expressionElements = expression.split(' ');
-  const [firstOperand, operator, secondOperand] = expressionElements;
-
-  let decision = '';
-
+const calculate = (firstOperand, operator, secondOperand) => {
   switch (operator) {
     case '-':
-      decision = String(+firstOperand - +secondOperand);
-      break;
+      return firstOperand - secondOperand;
     case '*':
-      decision = String(+firstOperand * +secondOperand);
-      break;
+      return firstOperand * secondOperand;
     case '+':
-      decision = String(+firstOperand + +secondOperand);
-      break;
+      return firstOperand + secondOperand;
     default:
       return null;
   }
-
-  return decision;
 };
 
 const generateGameData = () => {
-  const question = getRandomQuestion();
-  const answer = getAnswer(question);
+  const firstOperand = getRandomIntInclusive(1, maxRandomNumber);
+  const secondOperand = getRandomIntInclusive(1, maxRandomNumber);
+  const operator = operators[getRandomIntInclusive(0, operators.length - 1)];
+  const calculatedValue = calculate(firstOperand, operator, secondOperand);
+  const question = `${firstOperand} ${operator} ${secondOperand}`;
+  const answer = String(calculatedValue);
 
   return [question, answer];
 };

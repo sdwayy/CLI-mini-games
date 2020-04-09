@@ -1,4 +1,3 @@
-import intersection from 'lodash.intersection';
 import playGame from '../index.js';
 import getRandomIntInclusive from '../util.js';
 
@@ -11,32 +10,18 @@ const getRandomNumber = () => {
   return getRandomIntInclusive(minRandomNumber, maxRandomNumber);
 };
 
-const getNumberDividers = (number) => {
-  const absoluteNumber = Math.abs(number);
-  const dividers = [];
-
-  for (let i = 1; i <= absoluteNumber; i += 1) {
-    if (absoluteNumber % i === 0) {
-      dividers.push(i);
-    }
+const gcd = (firstNumber, secondNumber) => {
+  if (secondNumber === 0) {
+    return firstNumber;
   }
-
-  return dividers;
-};
-
-const getAnswer = (question) => {
-  const numbers = question.split(' ');
-  const [firstNumber, secondNumber] = numbers;
-  const firstNumberDivisors = getNumberDividers(firstNumber);
-  const seconNumberDivisors = getNumberDividers(secondNumber);
-  const commonDividers = intersection(firstNumberDivisors, seconNumberDivisors);
-
-  return String(commonDividers[commonDividers.length - 1]);
+  return gcd(secondNumber, firstNumber % secondNumber);
 };
 
 const generateGameData = () => {
-  const question = `${getRandomNumber()} ${getRandomNumber()}`;
-  const answer = getAnswer(question);
+  const firstNumber = getRandomNumber();
+  const secondNumber = getRandomNumber();
+  const question = `${firstNumber} ${secondNumber}`;
+  const answer = String(gcd(firstNumber, secondNumber));
 
   return [question, answer];
 };

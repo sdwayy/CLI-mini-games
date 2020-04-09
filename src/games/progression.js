@@ -1,22 +1,18 @@
 import playGame from '../index.js';
-import { getRandomIntInclusive } from '../util.js';
+import getRandomIntInclusive from '../util.js';
 
 const maxRandomNumber = 10;
 const progressionLength = 10;
 const gameDescription = 'What number is missing in the progression?.';
 
 const getProgression = (length, start, difference) => {
-  const randomProgression = [];
+  const progression = [];
 
   for (let i = 0; i < length; i += 1) {
-    if (i === 0) {
-      randomProgression.push(start);
-    } else {
-      randomProgression.push(randomProgression[i - 1] + difference);
-    }
+    progression.push(start + difference * i);
   }
 
-  return randomProgression;
+  return progression;
 };
 
 const getQuestion = (progression, unknownElementIndex) => {

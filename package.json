@@ -30,7 +30,6 @@
   },
   "homepage": "https://github.com/sdwayy/frontend-project-lvl1#readme",
   "dependencies": {
-    "lodash.intersection": "^4.4.0",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {

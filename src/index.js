@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-const maxGameAttempt = 3;
+const maxRound = 3;
 
 export default (gameDescription, getGameData) => {
   console.log('Welcome to the Brain Games!');
@@ -8,7 +8,7 @@ export default (gameDescription, getGameData) => {
   console.log(`Hello, ${userName}`);
   console.log(gameDescription);
 
-  for (let i = 0; i < maxGameAttempt; i += 1) {
+  for (let i = 0; i < maxRound; i += 1) {
     const [question, correctAnswer] = getGameData();
 
     console.log(`Question: ${question}`);

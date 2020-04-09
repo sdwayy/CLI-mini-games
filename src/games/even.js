@@ -1,5 +1,5 @@
 import playGame from '../index.js';
-import { getRandomIntInclusive } from '../util.js';
+import getRandomIntInclusive from '../util.js';
 
 const maxRandomNumber = 100;
 const minRandomNumber = 1;

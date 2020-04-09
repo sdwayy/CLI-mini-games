@@ -6,11 +6,17 @@ const minRandomNumber = -10;
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (number) => {
-  if (Math.sign(number) === -1) {
+  if (
+    Math.sign(number) === -1
+    || number === 1
+    || number === 0
+  ) {
     return false;
   }
 
-  for (let i = 2; i < number; i += 1) {
+  const maxDivide = number / 2;
+
+  for (let i = 2; i <= maxDivide; i += 1) {
     if (number % i === 0) {
       return false;
     }
