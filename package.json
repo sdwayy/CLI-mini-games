@@ -1,7 +1,7 @@
 {
   "name": "frontend-project-lvl1",
   "version": "0.6.3",
-  "description": "first hexlet project",
+  "description": "collection of cli games",
   "type": "module",
   "main": "src/index.js",
   "scripts": {
